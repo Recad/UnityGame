@@ -20,7 +20,7 @@ public class powerUp : MonoBehaviour {
 	
 	
 	 void Pickup(Collider player){
-		 
+		 FindObjectOfType<AudioManager>().Play("poder");
 		if (gameObject.CompareTag("vida")){
 			
 			Instantiate(efecto,transform.position, transform.rotation);

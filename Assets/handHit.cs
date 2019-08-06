@@ -20,8 +20,8 @@ public class handHit : MonoBehaviour {
 		
 			//Debug.Log(animator.GetTrigger("atacar"));
 			if (other.tag == "Player"){
-				
-					
+				FindObjectOfType<AudioManager>().Play("puno");
+					//FindObjectOfType<AudioManager>().Play("muertewoman");
 					other.GetComponent<wall>().vida = other.GetComponent<wall>().vida - damage ;
 					
 					int vidares = other.GetComponent<wall>().vida;

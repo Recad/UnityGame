@@ -28,6 +28,17 @@ public class wall : MonoBehaviour {
 	
 	
 	
+	public IEnumerator timedie(float waitTime)
+    {
+        //PlayerShooting.timeBetweenBullets -= RFBoostValue; // add boost
+       
+        yield return new WaitForSeconds(waitTime);
+         Application.Quit();
+        
+    }
+	
+	
+	
 	public IEnumerator PowerUpWearOff(float waitTime)
     {
         //PlayerShooting.timeBetweenBullets -= RFBoostValue; // add boost
@@ -45,6 +56,7 @@ public class wall : MonoBehaviour {
 	public void SpeedMax(){
 		
 		if (recargas>0) {
+			FindObjectOfType<AudioManager>().Play("habilidad");
 			StartCoroutine(PowerUpWearOff(5f));
 		
 		}
@@ -74,6 +86,7 @@ public class wall : MonoBehaviour {
 		
 		 
 		animator.SetBool("corre",runing);
+		
 		animator.SetBool("walking",walking);
 		animator.SetBool("reverse",reversa);
 		textoCargas.text = recargas.ToString();
@@ -118,11 +131,14 @@ public class wall : MonoBehaviour {
 		}*/
 		
 		if (vida <=0){
-						
+							//FindObjectOfType<AudioManager>().Play("muertewoman");
 							animator.SetTrigger("Memori");
 							animator.SetBool("Muerto",true);
 							
-							 Application.Quit();
+							StartCoroutine(timedie(3f));
+							
+							
+							 return;
 							
 							
 		}
