@@ -2,18 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class wall : MonoBehaviour {
 	
 	Animator animator;
 	CharacterController controlador;
-	
-	
+	public int recargas = 3; 
+	public int vida=500;
+	public Text textoCargas;
+	public Text textoVida;
 	public float velocidadRotacion = 240.0f;
+	public void iniciarataqueEvent(){
+		
+		 animator.SetBool("estaatacando",true);
+		//Debug.Log("inicia");
+	}
+	
+	
+	public void estaatacandoEvent(){
+		
+		animator.SetBool("estaatacando",false);
+		//Debug.Log("termina");
+	}
+	
+	
+	
+	public IEnumerator PowerUpWearOff(float waitTime)
+    {
+        //PlayerShooting.timeBetweenBullets -= RFBoostValue; // add boost
+        animator.SetFloat("Speed",2.5f);
+        textoCargas.text = recargas.ToString();
+        yield return new WaitForSeconds(waitTime);
+        recargas = recargas -1; 
+       
+        animator.SetFloat("Speed",1);
+        //PlayerShooting.timeBetweenBullets += RFBoostValue; // remove boost
+        //isActive = false;
+    }
+	
+	
+	public void SpeedMax(){
+		
+		if (recargas>0) {
+			StartCoroutine(PowerUpWearOff(5f));
+		
+		}
+	}
 	// Use this for initialization
 	void Start () {
 		animator = GetComponentInChildren<Animator>();//need this...
 		controlador = GetComponent<CharacterController>();
+		textoCargas = GameObject.Find("Canvas/cargas").GetComponent<Text>();
+		textoCargas.text = recargas.ToString();
+		
+		textoVida = GameObject.Find("Canvas/textvida").GetComponent<Text>();
+		textoVida.text = vida.ToString();
 		
 	}
 	
@@ -32,6 +76,17 @@ public class wall : MonoBehaviour {
 		animator.SetBool("corre",runing);
 		animator.SetBool("walking",walking);
 		animator.SetBool("reverse",reversa);
+		textoCargas.text = recargas.ToString();
+		if (vida>=0) {
+			
+				textoVida.text = vida.ToString();
+			
+			}else {
+				
+				textoVida.text = "0";
+				
+				}
+		
 		
 		/*if (Vertical < 0) {
 			Vertical = 0;
@@ -62,9 +117,24 @@ public class wall : MonoBehaviour {
 				
 		}*/
 		
+		if (vida <=0){
+						
+							animator.SetTrigger("Memori");
+							animator.SetBool("Muerto",true);
+							
+							 Application.Quit();
+							
+							
+		}
+		
 		if (Input.GetMouseButtonDown(1)) {
 				animator.SetTrigger("atacar");
+				
+				
 		}
+		
+		
+		
 		
 	}
 }

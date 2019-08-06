@@ -273,7 +273,29 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000000000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: iniciarataqueEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.2647059
+        functionName: NewEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.58549005
+        functionName: estaatacandoEvent
+        data: 
+        objectReferenceParameter: {fileID: 7400000, guid: 5fb035252af522e4ab08a5b553d33723,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

@@ -99,17 +99,19 @@ public class camMove : MonoBehaviour {
 			if (rotaR){
 				
 				
-				Quaternion CamRotAngulo = Quaternion.AngleAxis(-10.5f*velocidadrotar,Vector3.up);
+				Quaternion CamRotAngulo = Quaternion.AngleAxis(-9f*velocidadrotar,Vector3.up);
 				
 				_cameraOfsset = CamRotAngulo * _cameraOfsset;
-				
+							PlayerTranform.transform.Rotate(0,-9f*velocidadrotar,0);
+
 
 			}else if (rotaL){
 				
-				Quaternion CamRotAngulo = Quaternion.AngleAxis(10.5f*velocidadrotar,Vector3.up);
+				Quaternion CamRotAngulo = Quaternion.AngleAxis(9f*velocidadrotar,Vector3.up);
 				
 				_cameraOfsset = CamRotAngulo * _cameraOfsset;
-				
+							PlayerTranform.transform.Rotate(0,9f*velocidadrotar,0);
+
 			}
 			
 			
@@ -118,7 +120,6 @@ public class camMove : MonoBehaviour {
 		
 			transform.position = Vector3.Slerp(transform.position,newpocam,factor);
 			
-			PlayerTranform.transform.Rotate(0,Horizontal*310.0f*Time.deltaTime,0);
 			
 			
 			

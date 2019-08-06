@@ -70,8 +70,12 @@
      <Compile Include="Assets\AllStarCharacterLibrary\Scripts\MouseOrbit.cs" />
      <Compile Include="Assets\AllStarCharacterLibrary\Scripts\RadialAngler.cs" />
      <Compile Include="Assets\AllStarCharacterLibrary\Scripts\RootMotionOff.cs" />
+     <Compile Include="Assets\AllStarCharacterLibrary\Scripts\SwordHit.cs" />
      <Compile Include="Assets\AllStarCharacterLibrary\Scripts\wall.cs" />
      <Compile Include="Assets\cameramov.cs" />
+     <Compile Include="Assets\handHit.cs" />
+     <Compile Include="Assets\powerUp.cs" />
+     <Compile Include="Assets\swordHit.cs" />
      <None Include="Assets\Scenes\personajes\unitypackage\Readme.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/dacer/Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
